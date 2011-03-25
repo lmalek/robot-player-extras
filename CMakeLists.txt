@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 2.6)
+message(STATUS "[  ----     Extra drivers for Player/Stage system     ----  ]")
+project(robot-player-extras)
+#
+option(FLASH_ENABLE "flash" OFF)
+if(FLASH_ENABLE STREQUAL OFF)
+  message(STATUS "[ to enable flash driver run with parameter: -D FLASH_ENABLE=ON   ]")
+else(FLASH_ENABLE STREQUAL OFF)
+  message(STATUS "[ to disable flash driver run with parameter: -D FLASH_ENABLE=OFF ]")
+endif(FLASH_ENABLE STREQUAL OFF)
+#
+option(TE_ENABLE "te" OFF)
+if(TE_ENABLE STREQUAL OFF)
+  message(STATUS "[ to enable te driver run with parameter: -D TE_ENABLE=ON   ]")
+else(TE_ENABLE STREQUAL OFF)
+  message(STATUS "[ to disable te driver run with parameter: -D TE_ENABLE=OFF      ]")
+endif(TE_ENABLE STREQUAL OFF)
+
+if(FLASH_ENABLE STREQUAL ON)
+  add_subdirectory(flash)
+endif(FLASH_ENABLE STREQUAL ON)
+
+if(TE_ENABLE STREQUAL ON)
+  add_subdirectory(te)
+endif(TE_ENABLE STREQUAL ON)
